@@ -11,3 +11,74 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.skill-button {
+  background-color: white;
+  border-style: none;
+  width: 100px;
+  transition-duration: 0.2s;
+}
+
+.skill-button:focus{
+  outline: none
+}
+
+.skill-name {
+  display: grid;
+  grid-template-columns: auto 15px;
+  text-align: left;
+}
+
+.reject-line {
+  background-color: inherit;
+  height: 0px;
+  border-style: solid;
+  border-width: 1px;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+  margin: auto;
+  margin-top: 4px;
+  margin-bottom: auto;
+  width: 70%;
+  transition-duration: 0.2s;
+}
+
+.reject{
+  border-color: white;
+}
+
+
+.skill-button:hover .reject {
+  border-color: red;
+}
+
+.skill-button:focus .reject {
+  border-color: white;
+}
+
+.skill-line {
+  background-color: blue;
+  height: 2px;
+}
+
+.circle{
+  transition-duration: 0.2s;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 50%;
+  margin: 2px;
+}
+
+.skill-rejected {
+  transition-duration: 0.2s;
+  opacity: 0.4;
+}
+
+.skill-rejected:hover {
+  opacity: 1;
+}
+
+.skill-rejected:focus{
+  opacity: 0.4;
+}
