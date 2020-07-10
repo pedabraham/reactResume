@@ -64,20 +64,41 @@ function TechStack(props) {
 function Post(props){
   let description = props.value.description.map((line,i)=>
   <li key={props.title + i.toString()}>{line}</li>)
-
-  return(
-    <div className="post">
-      <div className="post-title">
-        {props.value.title}
+  if(props.value.pic){
+    const pic = props.value.pic;
+    return(
+      <div className="post pgrid">
+        <div className="post-graphics">
+          <img src={pic}  alt="Drawing" className="picture"/>
+        </div>
+        <div className="Post-text">
+          <div className="post-title">
+          {props.value.title}
+          </div>
+          <div className="post-place">
+          {props.value.place}
+          </div>
+          <div className="post-description">
+          {description}
+          </div>
+        </div>
       </div>
-      <div className="post-place">
-        {props.value.place}
-      </div>
-      <div className="post-description">
-        {description}
-      </div>
-    </div>
     )
+  } else{
+    return(
+      <div className="post">
+        <div className="post-title">
+          {props.value.title}
+        </div>
+        <div className="post-place">
+          {props.value.place}
+        </div>
+        <div className="post-description">
+          {description}
+        </div>
+      </div>
+    )
+  }
 }
 
 function Feed(props){
@@ -121,27 +142,30 @@ let entry1= {
         "description":["Built a system from the ground up to a proof of concept using sprints.","Developed the frontend of a car application using Python, jQuery, JavaScript, HTML, and CSS.","Designed multiple mockups using Adobe XD.","Use of git for version control."]
       };
 
-let entryTest2= [{
-  "title":"This site developer",
-  "place": "My home, 2020 pandemic",
-  "description":["Designed the sketchs of the site using Apple notes.","Designed mockups of the site using Sketch.","Developed the site trough components using React."]
-},entry1,{
-  "title":"Developer of Controller Designer",
-  "place": "Universidad de Guanajuato, 2019",
-	"description":["Created a web tool to design classic controllers using HTML, CSS, JavaScript, and Python as the backend thanks to flask.","Implented the root-locus and frequency response methods to design controllers using Python."]
-},{
-  "title":"Participant in a summer research program with the work “Multi-focus Image fusion using interpolations”",
-  "place":" Universidad de Guanajuato, 2018",
-	"description":["Developed an algorithm to combine two images, of the same scene and a distinct level of focus, 	in a single image by employing several image processing techniques, using Python."]
-},{
-  "title":"Member of project “Optical characterization of materials”",
-  "place":"Universidad de Guanajuato, 2017",
-	"description":["Modified, and tested, a methodology to synthesize thin films doped with an ionic liquid, 	obtaining great nonlinear absorption properties."]
-},{
-  "title":"Co-Developer of MDSM" ,
-  "place":"Universidad de Guanajuato, 2016",
-	"description":["Created an interface to open a strongbox using hand gestures by employing an array of CNY70 	sensors controlled by an FPGA described in, the hardware description language, VHDL."]
-}]
+let entryTest2= [
+  {
+    "title":"This site developer",
+    "place": "My home, 2020 pandemic",
+    "description":["Designed the sketchs of the site using Apple notes.","Designed mockups of the site using Sketch.","Developed the site trough components using React."],
+    
+  },entry1,{
+    "title":"Developer of Controller Designer",
+    "place": "Universidad de Guanajuato, 2019",
+  	"description":["Created a web tool to design classic controllers using HTML, CSS, JavaScript, and Python as the backend thanks to flask.","Implented the root-locus and frequency response methods to design controllers using Python."]
+  },{
+    "title":"Participant in a summer research program with the work “Multi-focus Image fusion using interpolations”",
+    "place":" Universidad de Guanajuato, 2018",
+  	"description":["Developed an algorithm to combine two images, of the same scene and a distinct level of focus, 	in a single image by employing several image processing techniques, using Python."]
+  },{
+    "title":"Member of project “Optical characterization of materials”",
+    "place":"Universidad de Guanajuato, 2017",
+  	"description":["Modified, and tested, a methodology to synthesize thin films doped with an ionic liquid, 	obtaining great nonlinear absorption properties."]
+  },{
+    "title":"Co-Developer of MDSM" ,
+    "place":"Universidad de Guanajuato, 2016",
+  	"description":["Created an interface to open a strongbox using hand gestures by employing an array of CNY70 	sensors controlled by an FPGA described in, the hardware description language, VHDL."]
+  }
+]
 
 const entradasEspañol = [
   {
@@ -158,10 +182,11 @@ const entradasEspañol = [
     "Diseñé prototipos en adobe XD."]
   },
   {
-    "title":"Desarrollador de Controller Designer",
-    "place": "Universidad de Guanajuato, 2019",
+    "title":  "Desarrollador de Controller Designer",
+    "place":  "Universidad de Guanajuato, 2019",
     "description":["Se creó una herramienta web para diseñar controladores clásicos usando HTML, 	CSS, JS y Python como el backend gracias a flask."],
-    "link":"https://github.com/pedabraham/ControlDiscreto"
+    "link":   "https://github.com/pedabraham/ControlDiscreto",
+
   },
   {
     "title":"Participante en una pasantía de verano de investigación con el trabajo “Fusión de imagnes multi-foco”",
@@ -206,8 +231,6 @@ class Language extends React.Component {
     this.props.onClick(language);
   }
 
-
-
   render(){
     return(
       <>
@@ -220,16 +243,7 @@ class Language extends React.Component {
       </>
     )
   }
-
-
-
 }
-
-
-
-
-
-
 
 class Resume extends React.Component{
   constructor(props){
@@ -241,7 +255,6 @@ class Resume extends React.Component{
       skills : skillJSON,
       language: "english"
     }
-
   }
 
   setLan(language){
@@ -258,7 +271,6 @@ class Resume extends React.Component{
     this.setState({
       skills: skills,
     })
-
   }
 
   filterFeed(rawFeed,skills){
@@ -297,6 +309,9 @@ class Resume extends React.Component{
           <Language onClick={(lan)=>this.setLan(lan)}/>
         </div>
         <div className="resume-filters">
+          <div className="post-title">
+            {this.state.language==="english" ? "Technologies" : "Tecnologías"}
+          </div>
           <TechStack values={this.state.skills}  onClick={(i)=>this.handleClick(i)} />
         </div>
         <div className="resume-feed">
