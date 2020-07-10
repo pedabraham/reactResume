@@ -43,7 +43,7 @@ code {
   margin: auto;
   margin-top: 5px;
   margin-bottom: auto;
-  width: 70%;
+  width: 60%;
   transition-duration: 0.2s;
 }
 
@@ -165,20 +165,38 @@ code {
     margin: 20px auto 20px auto;
 }
 
-.example-enter {
+.noColor{
+  background-color: white;
+}
+
+.inOutFeed-enter {
+  max-height: 0px;
   opacity: 0.01;
 }
 
-.example-enter.example-enter-active {
+.inOutFeed-enter.inOutFeed-enter-active {
   opacity: 1;
-  transition: opacity 500ms ease-in;
+  max-height: 300px;
+  transition: max-height 400ms ease-in, opacity 600ms ease-in;
 }
 
-.example-leave {
+.inOutFeed-leave {
+  max-height: 300px;
   opacity: 1;
 }
 
-.example-leave.example-leave-active {
+.inOutFeed-leave.inOutFeed-leave-active {
+  max-height: 0px;
+  opacity: 0.001;
+  transition: 500ms ease-in;
+
+}
+
+.inOutFeed-appear {
   opacity: 0.01;
-  transition: opacity 1000ms ease-in;
+}
+
+.inOutFeed-appear.inOutFeed-appear-active {
+  opacity: 1;
+  transition: all .5s ease-in;
 }

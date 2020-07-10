@@ -51,10 +51,10 @@ function TechStack(props) {
   const values = props.values;
   const htmlStack = values.map((skill,i) => {
 
-    const key="ts"+skill.name
+    const key="ts"+skill.name;
     return(
       <div key={key}>
-      <CheckButton  skill={skill.name} skillOn={skill.show} onClick={()=>props.onClick(i)}/>
+      <CheckButton skill={skill.name} skillOn={skill.show} onClick={()=>props.onClick(i)}/>
       </div>
     )
   })
@@ -62,7 +62,8 @@ function TechStack(props) {
 }
 
 function Post(props){
-  let description = props.value.description.map((x,i)=> <li key={props.title + i.toString()}>{x}</li>)
+  let description = props.value.description.map((line,i)=>
+  <li key={props.title + i.toString()}>{line}</li>)
 
   return(
     <div className="post">
@@ -87,24 +88,28 @@ function Feed(props){
       return(
         <div key={post.title}>
         <Post value={post}/>
-        {pline}
+        <div className="PostLine"></div>
         </div>
       )
     }
     else{
-      return(<div key={post.title}><Post value={post}/></div>)
+      return(
+        <div key={post.title}>
+        <Post value={post}/>
+        <div className="PostLine noColor"></div>
+        </div>)
     }
   })
-  const logo = require('./Path.png');
+  const garabato = require('./Path.png');
   return(
     < >
-    <CSSTransitionGroup
-          transitionName="example"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}>
-
+      <CSSTransitionGroup
+      transitionName="inOutFeed"
+      transitionEnterTimeout={600}
+      transitionLeaveTimeout={500}
+      >
           {feed}
-          <img key={"garabato"} src={logo}  alt="Drawing" className="resumeFinalDraw"/>
+          <img key={"garabato"} src={garabato}  alt="Drawing" className="resumeFinalDraw"/>
         </CSSTransitionGroup>
     </>
   )
@@ -116,7 +121,11 @@ let entry1= {
         "description":["Built a system from the ground up to a proof of concept using sprints.","Developed the frontend of a car application using Python, jQuery, JavaScript, HTML, and CSS.","Designed multiple mockups using Adobe XD.","Use of git for version control."]
       };
 
-let entryTest2= [entry1,{
+let entryTest2= [{
+  "title":"This site developer",
+  "place": "My home, 2020 pandemic",
+  "description":["Designed the sketchs of the site using Apple notes.","Designed mockups of the site using Sketch.","Developed the site trough components using React."]
+},entry1,{
   "title":"Developer of Controller Designer",
   "place": "Universidad de Guanajuato, 2019",
 	"description":["Created a web tool to design classic controllers using HTML, CSS, JavaScript, and Python as the backend thanks to flask.","Implented the root-locus and frequency response methods to design controllers using Python."]
@@ -138,7 +147,7 @@ let entryTest2= [entry1,{
 class Resume extends React.Component{
   constructor(props){
     const skills = ["Python","HTML","CSS","React","jQuery","VHDL","thin films"];
-    const skillJSON = skills.map(x=>({"name":x, "show": true}));
+    const skillJSON = skills.map(name=>({"name":name, "show": true}));
 
     super(props);
     this.state = {
