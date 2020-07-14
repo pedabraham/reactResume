@@ -1,3 +1,8 @@
+:root{
+  --lineColor2 : #7ED321;
+  --lineColor: #4775FF;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -61,7 +66,7 @@ code {
 }
 
 .skill-line {
-  background-color: blue;
+  background-color: var(--lineColor2);
   height: 3px;
 }
 
@@ -89,12 +94,11 @@ code {
 .resume{
   display: grid;
   grid-template-columns: 16% auto 16%;
+  margin-bottom: 2cm;
   /*grid-template-rows: 80px calc(100vh - 80px) ;*/
 }
 
-.resume-header{
-  grid-column: 1/3;
-  grid-row: 1/2;
+.header{
   margin-left: 1cm;
   font-size: 40px;
   font-weight: bold;
@@ -102,10 +106,16 @@ code {
   padding-top: 20px;
 }
 
+.grid-resume-header{
+  grid-column: 1/3;
+  grid-row: 1/2;
+
+}
+
 .resume-feed{
   grid-column: 2/3;
   grid-row:2/3;
-  margin: 30px auto 60px auto;
+  margin: 30px auto auto auto;
   overflow: scroll;
 }
 
@@ -116,7 +126,7 @@ code {
 }
 
 .resume-lan{
-  grid-column: 3/4;
+  grid-column: 2/3;
   margin: auto;
   font-size: 13px;
 }
@@ -159,12 +169,12 @@ code {
 .ResumeLine{
     width: 230px;
     height: 5px;
-    background-color: #2D03FF;
+    background-color: var(--lineColor);
 }
 
 .resumeFinalDraw{
     width: 600px;
-    margin: 40px auto 20px auto;
+    margin: 40px auto auto auto;
     display: block;
 }
 
@@ -220,9 +230,35 @@ code {
     height: 300px;
     text-align: center;*/
     display: block;
-    width: 100%;
+    width: 95%;
     margin-left: auto;
+    margin: auto;
     margin-right: auto;
-    -webkit-clip-path: circle(30% at center);
-    clip-path: circle(30% at center);
+    -webkit-clip-path: circle(50% at center);
+    clip-path: circle(50% at center);
+  }
+
+  .title{
+    margin: auto;
+    max-width: 710px;
+    display:grid;
+    grid-template-columns: 210px  auto;
+  }
+
+  .abstract{
+    margin: 1cm;
+    font-size: 15px;
+    font-family: 'Helvetica Neue', sans-serif;
+    font-weight: 400;
+  }
+
+  .gridTitle{
+    display: grid;
+    grid-template-columns: 84% 16%;
+  }
+
+  .mail{
+    margin: 1cm;
+    font-family: 'Helvetica Neue', sans-serif;
+    margin-top: 0px;
   }

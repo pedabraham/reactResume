@@ -146,8 +146,8 @@ let entryTest2= [
   {
     "title":"This site developer",
     "place": "My home, 2020 pandemic",
-    "description":["Designed the sketchs of the site using Apple notes.","Designed mockups of the site using Sketch.","Developed the site trough components using React."],
-    
+    "description":["Designed the sketches of the site using Apple notes.","Designed mockups of the site using Sketch.","Developed the site trough components using React."],
+
   },entry1,{
     "title":"Developer of Controller Designer",
     "place": "Universidad de Guanajuato, 2019",
@@ -171,7 +171,7 @@ const entradasEspañol = [
   {
     "title":"Desarrollador de este sitio",
     "place":"Mi casa, pandemia 2020",
-    "description":["Diseñe bocetos del sitio usando notas de Apple", "Realicé maquetas del sitio usando Sketch", "Desarrollé el sitio mediante componentes usando React"]
+    "description":["Diseñé bocetos del sitio usando notas de Apple", "Realicé maquetas del sitio usando Sketch", "Desarrollé el sitio mediante componentes usando React.","Diseñé el sitio usando CSS y HTML."]
   },
   {
     "title":"Pasante de Innovación y Desarrollo",
@@ -197,12 +197,12 @@ const entradasEspañol = [
   {
   "title":"Miembro del proyecto “Caracterización óptica de materiales”",
   "place":"Universidad de Guanajuato, 2017",
-  "description":["Se propuso una metodología para sintetizar películas delgadas dopadas con líquidos iónicos obteniendo buenos resultados de absorción no lineal."]
+  "description":["Se propuso una metodología para sintetizar películas delgadas (thin films) dopadas con líquidos iónicos, obteniendo como propiedad mas destacable la absorción no lineal."]
 },
 {
   "title":" Co-Desarrollador de MDSM",
   "place": "Universidad de Guanajuato, 2016",
-  "description": ["Se creó una intefaz para abrir una cerradura usando gestos de la mano usando un 	arreglo de sensores CNY70 controlados mediante una FPGA descrita en VHDL."],
+  "description": [" Creé una interfaz de cerradura, para usar gestos de la mano, empleando un arreglo de 	componentes CNY70 conectados a un FPGA cuyo código estaba descrito en VHDL."],
   "link": "http://pedabraham.github.io/MDSM/"
 },
 ]
@@ -257,12 +257,6 @@ class Resume extends React.Component{
     }
   }
 
-  setLan(language){
-    this.setState({
-      language: language
-    })
-  }
-
   handleClick(i){
     const skills = this.state.skills;
     const skillState= skills[i].show;
@@ -295,22 +289,17 @@ class Resume extends React.Component{
   }
 
   render(){
-    const lanFeed = this.state.language==="english" ? entryTest2 : entradasEspañol;
+    const lanFeed = this.props.lan==="english" ? entryTest2 : entradasEspañol;
     const feed = this.filterFeed(lanFeed,this.state.skills);
     return(
       <div className="resume">
-        <div className="resume-header">
-          <div className="resume-title">
-            {this.state.language==="english" ? "Resume" : "Currículum"}
-          </div>
+        <div className="header grid-resume-header">
+            {this.props.lan==="english" ? "Collaborations" : "Colaboraciones"}
           <div className="ResumeLine"></div>
-        </div>
-        <div className="resume-lan">
-          <Language onClick={(lan)=>this.setLan(lan)}/>
         </div>
         <div className="resume-filters">
           <div className="post-title">
-            {this.state.language==="english" ? "Technologies" : "Tecnologías"}
+            {this.props.lan==="english" ? "Technologies" : "Tecnologías"}
           </div>
           <TechStack values={this.state.skills}  onClick={(i)=>this.handleClick(i)} />
         </div>
@@ -322,10 +311,86 @@ class Resume extends React.Component{
   }
 }
 
+const absEspañol = (
+    <>
+    Siempre he encontrado interesante como la tecnología hace evolucionar el comportamiento humano, pero también como la tecnología se adapta para ser mas accesible e intuitiva al humano, lo que genera un vibrante ciclo de mejora continua.
+    <br />
+    Hola, soy Pedro Abraham Moreno Vazquez, ingeniero apasionado por el internet y las tecnologías que lo forman,  además con un gran interés en temas como procesamiento digital de señales y visión por computadora.
+    <br />
+    Me gusta poder reunirme con un equipo y discutir sobre cómo podemos cambiar o mejorar las condiciones de nuestro entorno ya sea en un almuerzo, un maratón de hackeo o en un proyecto de 6 meses o más de duración.
+    <br />
+    <br />
+    Si deseas saber mas sobre mi o mi opinión de algún tema, no dudes en contactarme.
+
+    </>
+  )
+
+const absEng = (
+  <>
+    I’ve always found interesting how technology makes human behavior evolve, but at the same time technology adapts to be more intuitive and accessible, generating a vibrant improvement cycle.
+    <br />
+    Hello, I’m Pedro Abraham Moreno Vazquez, an engineer passionate for the internet and the technologies that form it, also with a great interest in topics like signal processing and computer vision.
+    <br />
+    I love being part of a team and discuss how we can change the conditions around us either in, a lunch, a hackathon, or a 6 or more months project.
+    <br />
+    <br />
+    If you want to know more about me or discuss a special topic don’t hesitate to contact me.
+  </>
+)
+
+class AboutMe extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      language: "english"
+    }
+  }
+
+  setLan(language){
+    this.setState({
+      language: language
+    })
+  }
+
+  render(){
+    const pic = require("./IMG_8740.jpeg")
+    return(
+      <>
+        <div className="gridTitle">
+          <div className="header">
+            Pedro Abraham <br />
+            Moreno Vazquez
+            <div className="ResumeLine"></div>
+          </div>
+          <div className="resume-lan">
+            <Language onClick={(lan)=>this.setLan(lan)}/>
+          </div>
+        </div>
+        <div className="mail">
+        e-mail: <a href="mailto:pedabraham@gmail.com">pedabraham@gmail.com</a>
+        </div>
+        <div className="title">
+          <img src={pic}  alt="Drawing" className="picture"/>
+          <CSSTransitionGroup
+          transitionName="inOutFeed"
+          transitionEnterTimeout={600}
+          transitionLeaveTimeout={500}
+          >
+              <div key={"abs"} className="abstract">
+                {this.state.language=="english" ? absEng : absEspañol}
+              </div>
+          </CSSTransitionGroup>
+        </div>
+        <Resume lan={this.state.language}/>
+      </>
+    )
+  }
+}
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <Resume/>
+    <AboutMe/>
   </React.StrictMode>,
   document.getElementById('root')
 );
