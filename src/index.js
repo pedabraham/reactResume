@@ -58,7 +58,11 @@ function TechStack(props) {
       </div>
     )
   })
-  return(htmlStack)
+  return(
+    <div className="techStack">
+    {htmlStack}
+    </div>
+  )
 }
 
 function Post(props){
@@ -189,9 +193,9 @@ const entradasEspañol = [
 
   },
   {
-    "title":"Participante en una pasantía de verano de investigación con el trabajo “Fusión de imagnes multi-foco”",
-    "place":"Universidad de Guanajuato, 2018",
-    "description":["Se desarrolló un algoritmo para producir una imagen multi-foco por medio de la 	combimación de dos imágenes, de la misma escena y diferente enfoque, empleando 	diferentes técnicas de procesamiento de imágenes usando el lenguaje Python."],
+    "title":"Autor del proyecto “Fusión de imágenes multi-foco usando interpolaciones polinominales”",
+    "place":"Verano de investigación de la Universidad de Guanajuato, 2018",
+    "description":[" Desarrollé un algoritmo capaz de combinar dos imágenes, de la misma escena y distinto nivel 	de enfoque, en una sola empleando diversas técnicas de procesamiento de imágenes usando 	Python con librerías como  NumPy y OpenCV."],
     "link":"http://www.jovenesenlaciencia.ugto.mx/index.php/jovenesenlaciencia/article/view/2826/2080"
   },
   {
@@ -299,7 +303,7 @@ class Resume extends React.Component{
         </div>
         <div className="resume-filters">
           <div className="post-title">
-            {this.props.lan==="english" ? "Technologies" : "Tecnologías"}
+            {this.props.lan==="english" ? "Skills" : "Habilidades"}
           </div>
           <TechStack values={this.state.skills}  onClick={(i)=>this.handleClick(i)} />
         </div>
@@ -327,7 +331,7 @@ const absEspañol = (
 
 const absEng = (
   <>
-    I’ve always found interesting how technology makes human behavior evolve, but at the same time technology adapts to be more intuitive and accessible, generating a vibrant improvement cycle.
+    I have always found interesting how technology makes human behavior evolve, but at the same time technology adapts to be more intuitive and accessible, generating a vibrant improvement cycle.
     <br />
     Hello, I’m Pedro Abraham Moreno Vazquez, an engineer passionate for the internet and the technologies that form it, also with a great interest in topics like signal processing and computer vision.
     <br />
@@ -356,30 +360,32 @@ class AboutMe extends React.Component{
     const pic = require("./IMG_8740.jpeg")
     return(
       <>
-        <div className="gridTitle">
-          <div className="header">
-            Pedro Abraham <br />
-            Moreno Vazquez
-            <div className="ResumeLine"></div>
+      <div className="greyW">
+          <div className="gridTitle">
+            <div className="header">
+              Pedro Abraham <br />
+              Moreno Vazquez
+              <div className="ResumeLine"></div>
+            </div>
+            <div className="language">
+              <Language onClick={(lan)=>this.setLan(lan)}/>
+            </div>
           </div>
-          <div className="resume-lan">
-            <Language onClick={(lan)=>this.setLan(lan)}/>
+          <div className="mail">
+          e-mail: <a href="mailto:pedabraham@gmail.com">pedabraham@gmail.com</a>
           </div>
-        </div>
-        <div className="mail">
-        e-mail: <a href="mailto:pedabraham@gmail.com">pedabraham@gmail.com</a>
-        </div>
-        <div className="title">
-          <img src={pic}  alt="Drawing" className="picture"/>
-          <CSSTransitionGroup
-          transitionName="inOutFeed"
-          transitionEnterTimeout={600}
-          transitionLeaveTimeout={500}
-          >
-              <div key={"abs"} className="abstract">
-                {this.state.language=="english" ? absEng : absEspañol}
-              </div>
-          </CSSTransitionGroup>
+          <div className="aboutMe">
+            <img src={pic}  alt="Drawing" className="picture"/>
+            <CSSTransitionGroup
+            transitionName="inOutFeed"
+            transitionEnterTimeout={600}
+            transitionLeaveTimeout={500}
+            >
+                <div key={"abs"} className="abstract">
+                  {this.state.language=="english" ? absEng : absEspañol}
+                </div>
+            </CSSTransitionGroup>
+          </div>
         </div>
         <Resume lan={this.state.language}/>
       </>

@@ -125,7 +125,7 @@ code {
   margin-left: 1cm;
 }
 
-.resume-lan{
+.language{
   grid-column: 2/3;
   margin: auto;
   font-size: 13px;
@@ -213,10 +213,11 @@ code {
 }
 
 .lan-button{
-  background-color: white;
+  background-color: inherit;
   border-style: none;
   font-family: 'Helvetica Neue', sans-serif;
   opacity: 1;
+  color: inherit;
 }
 
 .falseB{
@@ -238,7 +239,7 @@ code {
     clip-path: circle(50% at center);
   }
 
-  .title{
+  .aboutMe{
     margin: auto;
     max-width: 710px;
     display:grid;
@@ -250,15 +251,85 @@ code {
     font-size: 15px;
     font-family: 'Helvetica Neue', sans-serif;
     font-weight: 400;
+    display: block;
+  }
+
+  .abstract::first-letter{
+  font-size: 2rem;
+  -webkit-initial-letter: 3;
   }
 
   .gridTitle{
     display: grid;
-    grid-template-columns: 84% 16%;
+    grid-template-columns: 80% 20%;
   }
 
   .mail{
-    margin: 1cm;
+    margin-left:  1cm;
     font-family: 'Helvetica Neue', sans-serif;
-    margin-top: 0px;
+  }
+
+  .greyW{
+    background-color: #3E4244;
+    color: #FFFF;
+  }
+
+  a{
+    color: inherit;
+  }
+
+  @media only screen and (max-width: 700px) {
+    .aboutMe{
+
+      grid-template-columns: 100%;
+      /*grid-template-rows: 380px auto;*/
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    .resume{
+      grid-template-columns: 100%;
+    }
+
+    .resume-feed{
+      grid-column: 1/2;
+      grid-row: 3/4;
+    }
+
+    .post{
+      max-width: 90%;
+    }
+
+    .resumeFinalDraw{
+      max-width: 80%;
+    }
+
+    .PostLine{
+      max-width: 150px;
+    }
+
+    .techStack{
+      display: grid;
+      grid-template-columns: 104px 104px 104px;
+    }
+
+    .resume-filters{
+      margin: 1cm auto 0 auto;
+    }
+
+    .picture{
+      max-width: 350px;
+    }
+
+    .header{
+      margin-left: 15px;
+    }
+
+    .language{
+      margin-top: 20px;
+    }
+
+    .mail{
+      margin-left: 15px;
+    }
   }
