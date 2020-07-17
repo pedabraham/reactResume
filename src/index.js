@@ -89,38 +89,38 @@ function TechStack(props) {
 function Post(props){
   let description = props.value.description.map((line,i)=>
   <li key={props.title + i.toString()}>{line}</li>)
+
+  let link = props.value.link ? <a href={props.value.link}>link</a> : " "
+
+  let text = (
+    <>
+      <div className="post-title">
+      {props.value.title}
+      </div>
+      <div className="post-place">
+      {props.value.place}
+      </div>
+      <div className="post-description">
+      {description}
+      </div>
+      {link}
+    </>
+  )
+
   if(props.value.pic){
     const pic = props.value.pic;
     return(
       <div className="post pgrid">
-        <div className="post-graphics">
-          <img src={pic}  alt="Drawing" className="picture"/>
-        </div>
+        <img src={pic}  alt="Drawing" className="picture"/>
         <div className="Post-text">
-          <div className="post-title">
-          {props.value.title}
-          </div>
-          <div className="post-place">
-          {props.value.place}
-          </div>
-          <div className="post-description">
-          {description}
-          </div>
+        {text}
         </div>
       </div>
     )
   } else{
     return(
       <div className="post">
-        <div className="post-title">
-          {props.value.title}
-        </div>
-        <div className="post-place">
-          {props.value.place}
-        </div>
-        <div className="post-description">
-          {description}
-        </div>
+        {text}
       </div>
     )
   }
@@ -163,32 +163,36 @@ function Feed(props){
 
 let entry1= {
         "title":"Trend Antenna Intern",
-        "place":"Continental AG,  September 2019 - february 2020",
-        "description":["Built a system from the ground up to a proof of concept using sprints.","Developed the frontend of a car application using Python, jQuery, JavaScript, HTML, and CSS.","Designed multiple mockups using Adobe XD.","Use of git for version control."]
+        "place":"Continental AG,  September 2019 - February 2020",
+        "description":["Built a system from the ground up to a proof of concept using sprints.","Developed the frontend of a car application using Python, jQuery, JavaScript, HTML, and CSS.","Designed multiple mockups using Adobe XD.","Use of git for version control."],
+        "pic":"https://uc708eef5d796c3a2e11f8fde523.dl.dropboxusercontent.com/cd/0/inline/A7u_QroZjQH4yxMWKeZ4CGns8HK1ZWiVSC6T_qYBKhdUlga-UIYOwcLayeOsLUmFIVbno0kQFgBhvXaYznEV2Unk3XkEH8cgvJDxjh4renq7IaWuyLYZktLsI6E-V-QyGGc/file#"
       };
 
 let entryTest2= [
   {
     "title":"This site developer",
     "place": "My home, 2020 pandemic",
-    "description":["Designed the sketches of the site using Apple notes.","Designed mockups of the site using Sketch.","Developed the site trough components using React."],
+    "description":["Designed the sketches of the site using Apple notes.","Designed mockups of the site using Sketch.","Developed the site trough components using React.","Designed the style of the site using CSS."],
 
   },entry1,{
     "title":"Developer of Controller Designer",
-    "place": "Universidad de Guanajuato, 2019",
-  	"description":["Created a web tool to design classic controllers using HTML, CSS, JavaScript, and Python as the backend thanks to flask.","Implented the root-locus and frequency response methods to design controllers using Python."]
+    "place": "University of Guanajuato, 2019",
+  	"description":["Created a web tool to design classic controllers using HTML, CSS, JavaScript, and Python as the backend thanks to flask.","Implemented the root-locus and frequency response methods to design controllers using Python."],
+    "link":   "https://github.com/pedabraham/ControlDiscreto",
   },{
-    "title":"Participant in a summer research program with the work “Multi-focus Image fusion using interpolations”",
-    "place":" Universidad de Guanajuato, 2018",
-  	"description":["Developed an algorithm to combine two images, of the same scene and a distinct level of focus, 	in a single image by employing several image processing techniques, using Python."]
+    "title":"Author of “Multi-focus Image fusion using interpolations”",
+    "place":"Summer research program of the University of Guanajuato, 2018",
+  	"description":["Developed an algorithm to combine two images, of the same scene and a distinct level of focus, 	in a single image by employing several image processing techniques, using Python."],
+    "link":"http://www.jovenesenlaciencia.ugto.mx/index.php/jovenesenlaciencia/article/view/2826/2080"
   },{
     "title":"Member of project “Optical characterization of materials”",
-    "place":"Universidad de Guanajuato, 2017",
-  	"description":["Modified, and tested, a methodology to synthesize thin films doped with an ionic liquid, 	obtaining great nonlinear absorption properties."]
+    "place":"University of Guanajuato, 2017",
+  	"description":["Modified, and tested, a methodology to synthesize thin films doped with an ionic liquid, 	obtaining nonlinear absorption as the more remarkable property."]
   },{
     "title":"Co-Developer of MDSM" ,
-    "place":"Universidad de Guanajuato, 2016",
-  	"description":["Created an interface to open a strongbox using hand gestures by employing an array of CNY70 	sensors controlled by an FPGA described in, the hardware description language, VHDL."]
+    "place":"University of Guanajuato, 2016",
+  	"description":["Created a lock interface to use hand gestures by employing an array of CNY70 	sensors controlled by an FPGA described in, the hardware description language, VHDL."],
+    "link": "http://pedabraham.github.io/MDSM/"
   }
 ]
 
@@ -196,27 +200,29 @@ const entradasEspañol = [
   {
     "title":"Desarrollador de este sitio",
     "place":"Mi casa, pandemia 2020",
-    "description":["Diseñé bocetos del sitio usando notas de Apple", "Realicé maquetas del sitio usando Sketch", "Desarrollé el sitio mediante componentes usando React.","Diseñé el sitio usando CSS y HTML."]
+    "description":["Diseñé bocetos del sitio usando notas de Apple", "Realicé maquetas del sitio usando Sketch", "Desarrollé el sitio mediante componentes usando React.","Diseñé el sitio usando CSS y JSX."]
   },
   {
-    "title":"Pasante de Innovación y Desarrollo",
-    "place": "Continental AG,  Septiembre 2019 - febrero 2020",
+    "title":"Pasante del programa Trend Antenna",
+    "place": "Continental AG,  Septiembre 2019 - Febrero 2020",
     "description": ["Se creó un sistema desde 0 hasta la prueba de conceptos usando sprints.",
     "Desarrollé el frontend del sistema usando HTML, CSS, JavaScript y jQuery.",
     "Desarrollé en conjunto con mi equipo del backend usando Python y Flask.",
-    "Diseñé prototipos en adobe XD."]
+    "Diseñé múltiples maquetas usando Adobe XD."],
+    "pic":"https://uc708eef5d796c3a2e11f8fde523.dl.dropboxusercontent.com/cd/0/inline/A7u_QroZjQH4yxMWKeZ4CGns8HK1ZWiVSC6T_qYBKhdUlga-UIYOwcLayeOsLUmFIVbno0kQFgBhvXaYznEV2Unk3XkEH8cgvJDxjh4renq7IaWuyLYZktLsI6E-V-QyGGc/file#"
   },
   {
     "title":  "Desarrollador de Controller Designer",
     "place":  "Universidad de Guanajuato, 2019",
-    "description":["Se creó una herramienta web para diseñar controladores clásicos usando HTML, 	CSS, JS y Python como el backend gracias a flask."],
+    "description":["Creé una herramienta web para diseñar controladores clásicos (PI,PID, PD) usando HTML, CSS, JavaScript, y Python con flask.",
+                     "Implementé métodos de diseño de controladores como: lugar geométrico de las raíces y análisis de respuesta en frecuencia."],
     "link":   "https://github.com/pedabraham/ControlDiscreto",
 
   },
   {
     "title":"Autor del proyecto “Fusión de imágenes multi-foco usando interpolaciones polinominales”",
     "place":"Verano de investigación de la Universidad de Guanajuato, 2018",
-    "description":[" Desarrollé un algoritmo capaz de combinar dos imágenes, de la misma escena y distinto nivel 	de enfoque, en una sola empleando diversas técnicas de procesamiento de imágenes usando 	Python con librerías como  NumPy y OpenCV."],
+    "description":[" Desarrollé un algoritmo capaz de combinar dos imágenes, de la misma escena y distinto nivel 	de enfoque, en una sola empleando diversas técnicas de procesamiento de imágenes usando Python con librerías como NumPy y OpenCV."],
     "link":"http://www.jovenesenlaciencia.ugto.mx/index.php/jovenesenlaciencia/article/view/2826/2080"
   },
   {
