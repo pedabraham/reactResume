@@ -13,13 +13,6 @@ class CheckButton extends React.Component{
     }
   }
 
-  //handleClick(){
-    //const skillState= this.state.skillOn;
-    //this.setState({
-      //skillOn: !skillState,
-    //})
-  //}
-
   render(){
     const skill = this.props.skill;
     const button = (
@@ -47,6 +40,34 @@ class CheckButton extends React.Component{
   }
 }
 
+class CheckButtonForm extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    let buttonClass = this.props.skillOn ? "skill-button" : "skill-button skill-rejected";
+
+    return (
+      <div className={buttonClass}>
+        <div className="skill-name">
+          <form>
+            <label>
+              <input
+                type="checkbox"
+                checked={this.props.skillOn}
+                onChange={()=>this.props.onClick()} />
+              {this.props.skill}
+              <div className="skill-line"></div>
+            </label>
+          </form>
+        </div>
+      </div>
+
+    );
+  }
+}
+
 function TechStack(props) {
   const values = props.values;
   const htmlStack = values.map((skill,i) => {
@@ -54,7 +75,7 @@ function TechStack(props) {
     const key="ts"+skill.name;
     return(
       <div key={key}>
-      <CheckButton skill={skill.name} skillOn={skill.show} onClick={()=>props.onClick(i)}/>
+      <CheckButtonForm skill={skill.name} skillOn={skill.show} onClick={()=>props.onClick(i)}/>
       </div>
     )
   })
