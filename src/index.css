@@ -278,7 +278,7 @@ code {
     color: inherit;
   }
 
-  @media only screen and (max-width: 700px) {
+  @media only screen and (max-width: 650px) {
     .aboutMe{
 
       grid-template-columns: 100%;
@@ -305,7 +305,8 @@ code {
     }
 
     .PostLine{
-      max-width: 150px;
+      width: 80%;
+      max-width: 480px;
     }
 
     .techStack{
@@ -333,3 +334,37 @@ code {
       margin-left: 15px;
     }
   }
+
+@media (hover: none) {
+  .skill-rejected:hover {
+    opacity: 0.4;
+  }
+}
+
+@media only screen and (max-width:1000px) and (min-width:650px){
+  .resume{
+    grid-template-columns: 160px auto;
+  }
+
+  .resumeFinalDraw{
+    width: 90%;
+  }
+
+  .PostLine{
+    width: 80%;
+    max-width: 480px;
+  }
+
+  .post{
+    width: 90%;
+    max-width: 550px;
+  }
+
+  .header{
+    margin-left: 0.5cm;
+  }
+
+  .resume-filters {
+    margin-left: 0.5cm;
+  }
+}
