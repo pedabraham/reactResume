@@ -139,6 +139,7 @@ code {
 
 .Post-graphics{
     margin: auto;
+    display: block;
 }
 
 .pgrid{
@@ -235,8 +236,9 @@ code {
     margin-left: auto;
     margin: auto;
     margin-right: auto;
-    -webkit-clip-path: circle(50% at center);
-    clip-path: circle(50% at center);
+    -webkit-clip-path: circle(47% at center);
+    clip-path: circle(47% at center);
+    padding: 3%;
   }
 
   .aboutMe{
@@ -267,6 +269,7 @@ code {
   .mail{
     margin-left:  1cm;
     font-family: 'Helvetica Neue', sans-serif;
+    color: inherit;
   }
 
   .greyW{
@@ -274,7 +277,7 @@ code {
     color: #FFFF;
   }
 
-  a{
+  .mail a{
     color: inherit;
   }
 
@@ -332,6 +335,14 @@ code {
 
     .mail{
       margin-left: 15px;
+    }
+
+    .pgrid{
+      grid-template-columns: 100%;
+    }
+
+    .pgrid .picture{
+      grid-row: 2/3;
     }
   }
 
