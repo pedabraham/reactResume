@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { CSSTransitionGroup } from 'react-transition-group';
 
@@ -41,10 +40,6 @@ class CheckButton extends React.Component{
 }
 
 class CheckButtonForm extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     let buttonClass = this.props.skillOn ? "skill-button" : "skill-button skill-rejected";
 
@@ -129,22 +124,14 @@ function Post(props){
 function Feed(props){
   const list = props.values;
   const feed = list.map((post,i) => {
-    const pline = <div className="PostLine"></div>
-    if (i<list.length -1){
+    let plineClass = i<list.length -1 ? "PostLine" : "PostLine noColor"
+
       return(
         <div key={post.title}>
         <Post value={post}/>
-        <div className="PostLine"></div>
+        <div className={plineClass}></div>
         </div>
       )
-    }
-    else{
-      return(
-        <div key={post.title}>
-        <Post value={post}/>
-        <div className="PostLine noColor"></div>
-        </div>)
-    }
   })
   const garabato = require('./Path.png');
   return(
@@ -165,7 +152,7 @@ let entry1= {
         "title":"Trend Antenna Intern",
         "place":"Continental AG,  September 2019 - February 2020",
         "description":["Built a system from the ground up to a proof of concept using sprints.","Developed the frontend of a car application using Python, jQuery, JavaScript, HTML, and CSS.","Designed multiple mockups using Adobe XD.","Use of git for version control."],
-        "pic":"https://uc708eef5d796c3a2e11f8fde523.dl.dropboxusercontent.com/cd/0/inline/A7u_QroZjQH4yxMWKeZ4CGns8HK1ZWiVSC6T_qYBKhdUlga-UIYOwcLayeOsLUmFIVbno0kQFgBhvXaYznEV2Unk3XkEH8cgvJDxjh4renq7IaWuyLYZktLsI6E-V-QyGGc/file#"
+        "pic":"https://www.dropbox.com/s/kkwtgdmd8jgb4qp/07BD2124-05B2-4A22-B734-B5A087E34E3C_1_105_c.jpeg?raw=1"
       };
 
 let entryTest2= [
@@ -209,7 +196,7 @@ const entradasEspañol = [
     "Desarrollé el frontend del sistema usando HTML, CSS, JavaScript y jQuery.",
     "Desarrollé en conjunto con mi equipo del backend usando Python y Flask.",
     "Diseñé múltiples maquetas usando Adobe XD."],
-    "pic":"https://uc708eef5d796c3a2e11f8fde523.dl.dropboxusercontent.com/cd/0/inline/A7u_QroZjQH4yxMWKeZ4CGns8HK1ZWiVSC6T_qYBKhdUlga-UIYOwcLayeOsLUmFIVbno0kQFgBhvXaYznEV2Unk3XkEH8cgvJDxjh4renq7IaWuyLYZktLsI6E-V-QyGGc/file#"
+    "pic":"https://www.dropbox.com/s/kkwtgdmd8jgb4qp/07BD2124-05B2-4A22-B734-B5A087E34E3C_1_105_c.jpeg?raw=1"
   },
   {
     "title":  "Desarrollador de Controller Designer",
@@ -409,7 +396,7 @@ class AboutMe extends React.Component{
             transitionLeaveTimeout={500}
             >
                 <div key={"abs"} className="abstract">
-                  {this.state.language=="english" ? absEng : absEspañol}
+                  {this.state.language==="english" ? absEng : absEspañol}
                 </div>
             </CSSTransitionGroup>
           </div>
