@@ -226,36 +226,16 @@ const entradasEspañol = [
 ]
 
 class Language extends React.Component {
-  constructor(props){
-    super(props);
-    this.state={
-      españolClass: "lan-button falseB",
-      englishClass: "lan-button"
-    }
-  }
-
-  lanSwitch(language){
-    if (language==="español") {
-      this.setState({
-        españolClass: "lan-button",
-        englishClass: "lan-button falseB"
-      })
-    }else if (language==="english") {
-      this.setState({
-        españolClass: "lan-button falseB",
-        englishClass: "lan-button "
-      })
-    }
-    this.props.onClick(language);
-  }
 
   render(){
+    let español = this.props.lan==="español" ? "lan-button" : "lan-button falseB";
+    let english = this.props.lan==="english" ? "lan-button" : "lan-button falseB";
     return(
       <>
-        <button className={this.state.englishClass} onClick={()=>this.lanSwitch("english")}>
+        <button className={english} onClick={()=>this.props.onClick("english")}>
           English
         </button> /
-        <button className={this.state.españolClass} onClick={()=>this.lanSwitch("español")}>
+        <button className={español} onClick={()=>this.props.onClick("español")}>
           Español
         </button>
       </>
@@ -360,7 +340,7 @@ class AboutMe extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      language: "english"
+      language: "español"
     }
   }
 
@@ -382,7 +362,7 @@ class AboutMe extends React.Component{
               <div className="ResumeLine"></div>
             </div>
             <div className="language">
-              <Language onClick={(lan)=>this.setLan(lan)}/>
+              <Language onClick={(lan)=>this.setLan(lan)} lan={this.state.language} />
             </div>
           </div>
           <div className="mail">
@@ -390,15 +370,9 @@ class AboutMe extends React.Component{
           </div>
           <div className="aboutMe">
             <img src={pic}  alt="Drawing" className="picture"/>
-            <CSSTransitionGroup
-            transitionName="inOutFeed"
-            transitionEnterTimeout={600}
-            transitionLeaveTimeout={500}
-            >
                 <div key={"abs"} className="abstract">
                   {this.state.language==="english" ? absEng : absEspañol}
                 </div>
-            </CSSTransitionGroup>
           </div>
         </div>
         <Resume lan={this.state.language}/>
