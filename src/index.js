@@ -6,6 +6,11 @@ import { CSSTransitionGroup } from 'react-transition-group';
 
 
 class CheckButtonForm extends React.Component {
+  /*props
+  skillOn - state of the button
+  onClick - function of the button
+  skill - text of the button
+  */
   render() {
     let buttonClass = this.props.skillOn ? "skill-button" : "skill-button skill-rejected";
 
@@ -30,6 +35,10 @@ class CheckButtonForm extends React.Component {
 }
 
 function TechStack(props) {
+  /*props
+  values - JSON object with the name and state(selected or not) of each skill
+  onClick - function to change the state of current skill
+  */
   const values = props.values;
   const htmlStack = values.map((skill,i) => {
 
@@ -48,6 +57,9 @@ function TechStack(props) {
 }
 
 function Post(props){
+  /*props
+  value - JSON object with the data of the post
+  */
   let description = props.value.description.map((line,i)=>
   <li key={props.title + i.toString()}>{line}</li>)
 
@@ -88,6 +100,9 @@ function Post(props){
 }
 
 function Feed(props){
+  /*props
+  values - array of posts
+  */
   const list = props.values;
   const feed = list.map((post,i) => {
     let plineClass = i<list.length -1 ? "PostLine" : "PostLine noColor"
@@ -192,6 +207,9 @@ const entradasEspañol = [
 ]
 
 class Language extends React.Component {
+  /*props
+  onClick - function to change the language
+  */
 
   render(){
     let español = this.props.lan==="español" ? "lan-button" : "lan-button falseB";
@@ -210,6 +228,10 @@ class Language extends React.Component {
 }
 
 class Resume extends React.Component{
+  /*props
+  lan - language of the content
+  */
+
   constructor(props){
     const skills = ["Python","HTML","CSS","React","jQuery","VHDL","thin films"];
     const skillJSON = skills.map(name=>({"name":name, "show": true}));
@@ -303,6 +325,9 @@ const absEng = (
 )
 
 class AboutMe extends React.Component{
+  /*props
+  */
+
   constructor(props){
     super(props);
     this.state = {
@@ -346,7 +371,6 @@ class AboutMe extends React.Component{
     )
   }
 }
-
 
 ReactDOM.render(
   <React.StrictMode>
