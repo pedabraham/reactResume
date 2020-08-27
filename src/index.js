@@ -233,7 +233,7 @@ class Resume extends React.Component{
   */
 
   constructor(props){
-    const skills = ["Python","HTML","CSS","React","jQuery","VHDL","thin films"];
+    const skills = ["Python","JavaScript","HTML","CSS","React","jQuery","VHDL","thin films"];
     const skillJSON = skills.map(name=>({"name":name, "show": true}));
 
     super(props);

@@ -30,7 +30,6 @@ code {
 
 .skill-name {
   display: grid;
-  grid-template-columns: auto 17px;
   text-align: left;
   font-size: 15px;
   font-style: normal;
