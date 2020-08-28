@@ -306,8 +306,7 @@ const absEspañol = (
     Me gusta poder reunirme con un equipo y discutir sobre cómo podemos cambiar o mejorar las condiciones de nuestro entorno ya sea en un almuerzo, un maratón de hackeo o en un proyecto de 6 meses o más de duración.
     <br />
     <br />
-    Si deseas saber mas sobre mi o mi opinión de algún tema, no dudes en contactarme.
-
+    Si deseas saber mas sobre mí o mi opinión de algún tema, no dudes en contactarme.
     </>
   )
 
