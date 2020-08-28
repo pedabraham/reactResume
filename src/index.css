@@ -235,7 +235,7 @@ code {
   }
 
   .greyW{
-    background-color: #3E4244;
+    background: linear-gradient(to bottom right, #3e4244, #180996);
     color: #FFFF;
   }
 
