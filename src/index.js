@@ -61,7 +61,7 @@ function Post(props){
   value - JSON object with the data of the post
   */
   let description = props.value.description.map((line,i)=>
-  <li key={props.title + i.toString()}>{line}</li>)
+    <li key={props.title + i.toString()}>{line}</li>)
 
   let link = props.value.link ? <a href={props.value.link}>link</a> : " "
 
@@ -129,20 +129,18 @@ function Feed(props){
   )
 }
 
-let entry1= {
-        "title":"Trend Antenna Intern",
-        "place":"Continental AG,  September 2019 - February 2020",
-        "description":["Built a system from the ground up to a proof of concept using sprints.","Developed the frontend of a car application using Python, jQuery, JavaScript, HTML, and CSS.","Designed multiple mockups using Adobe XD.","Use of git for version control."],
-        "pic":"https://www.dropbox.com/s/kkwtgdmd8jgb4qp/07BD2124-05B2-4A22-B734-B5A087E34E3C_1_105_c.jpeg?raw=1"
-      };
-
-let entryTest2= [
+const entradasIngles= [
   {
     "title":"This site developer",
     "place": "My home, 2020 pandemic",
     "description":["Designed the sketches of the site using Apple notes.","Designed mockups of the site using Sketch.","Developed the site trough components using React.","Designed the style of the site using CSS."],
 
-  },entry1,{
+  },{
+    "title":"Trend Antenna Intern",
+    "place":"Continental AG,  September 2019 - February 2020",
+    "description":["Built a system from the ground up to a proof of concept using sprints.","Developed the frontend of a car application using Python, jQuery, JavaScript, HTML, and CSS.","Designed multiple mockups using Adobe XD.","Use of git for version control."],
+    "pic":"https://www.dropbox.com/s/kkwtgdmd8jgb4qp/07BD2124-05B2-4A22-B734-B5A087E34E3C_1_105_c.jpeg?raw=1"
+  },{
     "title":"Developer of Controller Designer",
     "place": "University of Guanajuato, 2019",
   	"description":["Created a web tool to design classic controllers using HTML, CSS, JavaScript, and Python as the backend thanks to flask.","Implemented the root-locus and frequency response methods to design controllers using Python."],
@@ -247,7 +245,7 @@ class Resume extends React.Component{
     const skills = this.state.skills;
     const skillState= skills[i].show;
     skills[i].show = !skillState;
-    //let feed = this.filterFeed(entryTest2,this.state.skills);
+    //let feed = this.filterFeed(entradasIngles,this.state.skills);
     this.setState({
       skills: skills,
     })
@@ -275,7 +273,7 @@ class Resume extends React.Component{
   }
 
   render(){
-    const lanFeed = this.props.lan==="english" ? entryTest2 : entradasEspañol;
+    const lanFeed = this.props.lan==="english" ? entradasIngles : entradasEspañol;
     const feed = this.filterFeed(lanFeed,this.state.skills);
     return(
       <div className="resume">
@@ -323,7 +321,7 @@ const absEng = (
   </>
 )
 
-class AboutMe extends React.Component{
+class Profile extends React.Component{
   /*props
   */
 
@@ -341,39 +339,45 @@ class AboutMe extends React.Component{
   }
 
   render(){
-    const pic = require("./IMG_8740.jpeg")
     return(
       <>
       <div className="greyW">
-          <div className="gridTitle">
-            <div className="header">
+        <div className="gridTitle">
+          <div className="header">
               Pedro Abraham <br />
               Moreno Vazquez
               <div className="ResumeLine"></div>
-            </div>
-            <div className="language">
+              <div className="mail">
+              e-mail: <a href="mailto:pedabraham@gmail.com">pedabraham@gmail.com</a>
+              </div>
+          </div>
+          <div className="language">
               <Language onClick={(lan)=>this.setLan(lan)} lan={this.state.language} />
-            </div>
-          </div>
-          <div className="mail">
-          e-mail: <a href="mailto:pedabraham@gmail.com">pedabraham@gmail.com</a>
-          </div>
-          <div className="aboutMe">
-            <img src={pic}  alt="Drawing" className="picture"/>
-                <div key={"abs"} className="abstract">
-                  {this.state.language==="english" ? absEng : absEspañol}
-                </div>
           </div>
         </div>
+        <AboutMe lan={this.state.language}/>
+      </div>
         <Resume lan={this.state.language}/>
       </>
     )
   }
 }
 
+function AboutMe(props){
+  const pic = require("./Menotion.png")
+  return(
+    <div className="aboutMe">
+      <img src={pic}  alt="Drawing" className="picture"/>
+      <div key={"abs"} className="abstract">
+        {props.lan==="english" ? absEng : absEspañol}
+      </div>
+    </div>
+  )
+}
+
 ReactDOM.render(
   <React.StrictMode>
-    <AboutMe/>
+    <Profile/>
   </React.StrictMode>,
   document.getElementById('root')
 );

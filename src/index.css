@@ -229,9 +229,10 @@ code {
   }
 
   .mail{
-    margin-left:  1cm;
     font-family: 'Helvetica Neue', sans-serif;
     color: inherit;
+    font-size: 16px;
+    font-weight: lighter;
   }
 
   .greyW{
@@ -295,10 +296,6 @@ code {
       margin-top: 20px;
     }
 
-    .mail{
-      margin-left: 15px;
-    }
-
     .pgrid{
       grid-template-columns: 100%;
     }
@@ -334,10 +331,6 @@ code {
   }
 
   .header{
-    margin-left: 0.5cm;
-  }
-
-  .mail{
     margin-left: 0.5cm;
   }
 
