@@ -74,7 +74,9 @@ function Post(props){
       {props.value.place}
       </div>
       <div className="post-description">
-      {description}
+      <ul>
+        {description}
+      </ul>
       </div>
       {link}
     </>
@@ -341,6 +343,7 @@ class Profile extends React.Component{
   render(){
     return(
       <>
+      <a className="skip-link" href="#bio">Skip to Bio</a>
       <div className="greyW">
         <div className="gridTitle">
           <div className="header">
@@ -366,7 +369,7 @@ class Profile extends React.Component{
 function AboutMe(props){
   const pic = require("./Menotion.png")
   return(
-    <div className="aboutMe">
+    <div className="aboutMe" id="bio">
       <img src={pic}  alt="Drawing" className="picture"/>
       <div key={"abs"} className="abstract">
         {props.lan==="english" ? absEng : absEspañol}
