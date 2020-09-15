@@ -111,6 +111,9 @@ code {
   margin: 20px auto 20px auto;
   max-width: 550px;
   margin: 20px auto 20px auto;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  font-style: normal;
 }
 
 .Post-graphics{
@@ -124,42 +127,32 @@ code {
 }
 
 .post-title{
-    font-size: 25px;
-    font-weight: bold;
-    font-family: 'Helvetica Neue', sans-serif;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 .post-place{
-    font-size: 15px;
-    font-style: italic;
-    font-family: 'Helvetica Neue', sans-serif;
-    font-weight: 300;
-}
-
-.post-description{
-    font-size: 15px;
-    font-style: normal;
-    font-family: 'Helvetica Neue', sans-serif;
-
-}
-
-.ResumeLine{
-    width: 230px;
-    height: 5px;
-    background-color: var(--lineColor);
-}
-
-.resumeFinalDraw{
-    width: 600px;
-    margin: 40px auto auto auto;
-    display: block;
+  font-style: italic;
+  font-weight: 300;
 }
 
 .PostLine{
-    height: 1px;
-    background-color: black;
-    width: 480px;
-    margin: 20px auto 20px auto;
+  height: 1px;
+  background-color: black;
+  width: 480px;
+  margin: 20px auto 20px auto;
+}
+
+.ResumeLine{
+  width: 230px;
+  height: 5px;
+  background-color: var(--lineColor);
+}
+
+.resumeFinalDraw{
+  width: 600px;
+  margin: 40px auto auto auto;
+  display: block;
 }
 
 .noColor{
@@ -202,122 +195,114 @@ code {
 }
 
 .picture{
-    /*border-style: solid;
-    border-width: 1em;
-    border-color:black;
-    height: 300px;
-    text-align: center;*/
-    display: block;
-    width: 95%;
-    margin-left: auto;
-    margin: auto;
-    margin-right: auto;
-    -webkit-clip-path: circle(45% at center);
-    clip-path: circle(45% at center);
-    padding: 3%;
-  }
+  display: block;
+  width: 95%;
+  margin-left: auto;
+  margin: auto;
+  margin-right: auto;
+  -webkit-clip-path: circle(45% at center);
+  clip-path: circle(45% at center);
+  padding: 3%;
+}
+.aboutMe{
+  margin: auto;
+  max-width: 710px;
+  display:grid;
+  grid-template-columns: 210px  auto;
+}
 
+.abstract{
+  margin: 1cm;
+  font-size: 15px;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: 400;
+  display: block;
+}
+
+.abstract::first-letter{
+font-size: 2rem;
+-webkit-initial-letter: 3;
+}
+
+.gridTitle{
+  display: grid;
+  grid-template-columns: 80% 20%;
+}
+
+.mail{
+  font-family: 'Helvetica Neue', sans-serif;
+  color: inherit;
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.mail a{
+  color: inherit;
+}
+
+.greyW{
+  background: linear-gradient(to bottom right, #3e4244, #180996);
+  color: #FFFF;
+}
+
+@media only screen and (max-width: 650px) {
   .aboutMe{
-    margin: auto;
-    max-width: 710px;
-    display:grid;
-    grid-template-columns: 210px  auto;
+    grid-template-columns: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
 
-  .abstract{
-    margin: 1cm;
-    font-size: 15px;
-    font-family: 'Helvetica Neue', sans-serif;
-    font-weight: 400;
-    display: block;
+  .resume{
+    grid-template-columns: 100%;
   }
 
-  .abstract::first-letter{
-  font-size: 2rem;
-  -webkit-initial-letter: 3;
+  .resume-feed{
+    grid-column: 1/2;
+    grid-row: 3/4;
   }
 
-  .gridTitle{
+  .post{
+    max-width: 90%;
+  }
+
+  .resumeFinalDraw{
+    max-width: 80%;
+  }
+
+  .PostLine{
+    width: 80%;
+    max-width: 480px;
+  }
+
+  .techStack{
     display: grid;
-    grid-template-columns: 80% 20%;
+    grid-template-columns: 104px 104px 104px;
   }
 
-  .mail{
-    font-family: 'Helvetica Neue', sans-serif;
-    color: inherit;
-    font-size: 16px;
-    font-weight: lighter;
+  .resume-filters{
+    margin: 1cm auto 0 auto;
   }
 
-  .greyW{
-    background: linear-gradient(to bottom right, #3e4244, #180996);
-    color: #FFFF;
+  .picture{
+    max-width: 350px;
   }
 
-  .mail a{
-    color: inherit;
+  .header{
+    margin-left: 15px;
   }
 
-  @media only screen and (max-width: 650px) {
-    .aboutMe{
-
-      grid-template-columns: 100%;
-      /*grid-template-rows: 380px auto;*/
-      margin-top: 10px;
-      margin-bottom: 10px;
-    }
-
-    .resume{
-      grid-template-columns: 100%;
-    }
-
-    .resume-feed{
-      grid-column: 1/2;
-      grid-row: 3/4;
-    }
-
-    .post{
-      max-width: 90%;
-    }
-
-    .resumeFinalDraw{
-      max-width: 80%;
-    }
-
-    .PostLine{
-      width: 80%;
-      max-width: 480px;
-    }
-
-    .techStack{
-      display: grid;
-      grid-template-columns: 104px 104px 104px;
-    }
-
-    .resume-filters{
-      margin: 1cm auto 0 auto;
-    }
-
-    .picture{
-      max-width: 350px;
-    }
-
-    .header{
-      margin-left: 15px;
-    }
-
-    .language{
-      margin-top: 20px;
-    }
-
-    .pgrid{
-      grid-template-columns: 100%;
-    }
-
-    .pgrid .picture{
-      grid-row: 2/3;
-    }
+  .language{
+    margin-top: 20px;
   }
+
+  .pgrid{
+    grid-template-columns: 100%;
+  }
+
+  .pgrid .picture{
+    grid-row: 2/3;
+  }
+}
 
 @media (hover: none) {
   .skill-rejected:hover {
